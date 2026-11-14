@@ -27,3 +27,5 @@ This GitHub space is where I plan to document useful resources, workflow experim
 
 - 🌐 [The Impact Connector — my website](https://saddamsayyaleh.wordpress.com/)
 - 🤝 [LinkedIn — Saddam Sayyaleh](https://www.linkedin.com/in/saddamsayyaleh/)
+- ✍️ [Medium — articles and perspectives](https://medium.com/@saddamsayyaleh)
+- 📝 [AI Readiness in MENA: The Real Challenge Is Organisational Capacity](https://saddamsayyaleh.wordpress.com/2026/11/11/ai-readiness-mena-organisational-capacity/)
