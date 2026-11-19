@@ -1,0 +1,5 @@
+issue_id,programme_id,description,source_refs,classification,status
+R01,Y01,118 unique participants vs 126 participants reached,I01|I02,indicator_definition_difference,needs_clarification
+R02,Y01,8 vs 9 workshops delivered,I03|I04,unresolved_source_difference,investigate
+R03,Y02,Missing reporting date,U05,required_field_missing,awaiting_contributor
+R04,Y03,Participant counting definition unclear,U08,indicator_definition_difference,needs_clarification
