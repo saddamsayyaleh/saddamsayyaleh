@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The Impact Connector Applied AI Workflow Lab: explore a constructed nonprofit reporting scenario and run a private organisational AI readiness self-assessment." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Saddam Sayyaleh" />
+  <meta property="og:site_name" content="Saddam Sayyaleh | The Impact Connector" />
+  <meta name="theme-color" content="#101D29" />
+  <title>AI Readiness & Workflow Lab | Saddam Sayyaleh — The Impact Connector</title>
+  <style>
+:root { --ink:#101D29; --muted:#4D626C; --line:#D4E1DF; --paper:#F4F0E8; --white:#FFFFFF; --sea:#14797F; --accent:#EAF2F2; --warn:#8c4f23; --good:#24674c; --shadow:0 18px 46px rgba(25,55,59,.06); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+body:lang(ar) { font-family:Tahoma,"Noto Sans Arabic",Arial,sans-serif; line-height:1.8; }
+button, input { font:inherit; }
+button { cursor:pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline:3px solid #4a9ba0; outline-offset:3px; }
+button:disabled { opacity:.42; cursor:not-allowed; }
+.skip { position:absolute; z-index:20; inset-inline-start:-10000px; background:var(--ink); color:white; padding:10px; }
+.skip:focus { inset-inline-start:8px; top:8px; }
+.shell { max-width:1140px; width:calc(100% - 64px); margin-inline:auto; }
+.topbar { background:var(--white); border-bottom:1px solid var(--line); }
+.topbar-inner { min-height:83px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.brand { display:flex; align-items:center; gap:12px; line-height:1.25; }
+.brand-mark { width:43px; height:43px; display:grid; place-content:center; background:var(--ink); color:#fff; border-radius:10px; font-size:14px; font-weight:800; letter-spacing:-1px; }
+.brand-mark span { color:#87c5be; }
+.brand strong,.brand small { display:block; }
+.brand strong { font-size:16px; }
+.brand small { color:var(--muted); font-size:12px; margin-top:5px; }
+.header-actions { display:flex; align-items:center; gap:24px; }
+.version { font-size:11px; letter-spacing:.2em; font-weight:800; color:var(--muted); }
+.lang-switch { display:flex; align-items:center; border:1px solid var(--line); padding:3px; border-radius:10px; gap:3px; }
+.lang-switch button { padding:5px 12px; font-size:12px; background:transparent; border:0; color:var(--muted); border-radius:7px; }
+.lang-switch button[aria-pressed="true"] { color:var(--white); background:var(--ink); }
+.hero { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr); gap:28px; padding:44px 0 28px; }
+.hero-main { min-height:392px; background:#fff; border:1px solid var(--line); padding:46px; border-radius:20px; display:flex; flex-direction:column; justify-content:center; }
+.eyebrow { font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--sea); margin:0 0 12px; }
+h1,h2,h3,p { margin-top:0; }
+h1 { font-size:clamp(34px,4vw,55px); letter-spacing:-.05em; line-height:1.06; max-width:680px; margin-bottom:20px; }
+h2 { font-size:clamp(26px,3vw,37px); letter-spacing:-.035em; line-height:1.2; margin:0 0 10px; }
+h3 { font-size:21px; letter-spacing:-.02em; line-height:1.25; margin:0 0 7px; }
+body:lang(ar) h1,body:lang(ar) h2,body:lang(ar) h3 { letter-spacing:normal; }
+.hero-lead { color:#42595f; font-size:17px; max-width:600px; line-height:1.7; margin-bottom:26px; }
+.hero-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.btn { border:1px solid var(--line); padding:12px 18px; border-radius:10px; display:inline-flex; gap:13px; align-items:center; justify-content:center; text-align:center; font-weight:700; font-size:14px; transition:transform .15s ease,background .15s ease; }
+.btn:not(:disabled):hover { transform:translateY(-1px); }
+.btn.primary { color:white; border-color:var(--ink); background:var(--ink); }
+.btn.primary:hover { background:#25505a; }
+.btn.muted { color:var(--ink); background:white; }
+.hero-meta { display:flex; flex-wrap:wrap; align-items:center; gap:9px; color:var(--muted); font-size:12px; margin-top:23px; }
+.dot { background:var(--sea); width:4px; height:4px; border-radius:99px; }
+.hero-art { position:relative; overflow:hidden; border-radius:20px; background:linear-gradient(135deg,#173d44 0%,#133039 65%,#0e252d 100%); color:white; min-height:392px; padding:30px; }
+.hero-art::after { content:""; position:absolute; width:350px; height:350px; border-radius:50%; border:1px solid rgba(255,255,255,.09); top:30px; right:-140px; box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 115px rgba(255,255,255,.015); }
+.art-label,.art-foot { position:relative; z-index:1; font-size:10px; font-weight:800; letter-spacing:.19em; color:#b9d6d5; }
+.art-foot { position:absolute; bottom:31px; inset-inline-start:31px; line-height:1.8; }
+.art-bubbles { position:absolute; top:70px; bottom:85px; left:32px; right:35px; }
+.art-bubbles::before { content:""; position:absolute; left:20%; top:20%; right:20%; bottom:20%; border:1px dashed rgba(202,237,228,.32); border-radius:50%; transform:rotate(-30deg); }
+.node { position:absolute; width:130px; height:72px; background:#e5efec; color:#143b3f; border-radius:12px; padding:13px; line-height:1.6; font-size:10px; box-shadow:0 10px 20px rgba(0,0,0,.1); }
+.node b { display:block; font-size:12px; }
+.n1 { top:3%; left:4%; transform:rotate(-5deg); }.n2 { top:14%; right:0; transform:rotate(5deg); }.n3 { bottom:9%; left:14%; transform:rotate(4deg); }.n4 { bottom:4%; right:2%; transform:rotate(-4deg); }
+.notice { display:flex; align-items:flex-start; gap:12px; padding:13px 17px; font-size:13px; border:1px solid #d8e2de; border-radius:10px; color:#435d60; background:#eaf1ee; }
+.notice-icon { display:inline-grid; place-content:center; background:var(--sea); color:white; font-weight:800; flex:none; width:18px; height:18px; border-radius:99px; font-size:11px; }
+.tabs { margin:28px 0 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+.tab { display:flex; align-items:center; gap:12px; border:1px solid var(--line); background:white; color:#53686c; padding:17px 18px; border-radius:12px; text-align:start; font-weight:750; font-size:14px; }
+.tab.active { background:var(--ink); color:white; border-color:var(--ink); }
+.tab-index { font-size:11px; opacity:.68; }
+.panel { padding:19px 0 30px; }
+.hidden { display:none !important; }
+.section-head { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin-bottom:24px; }
+.section-head>div { max-width:800px; }
+.section-head p:not(.eyebrow) { margin-top:13px; color:#53686c; font-size:15px; }
+.step-label,.progress-tag { white-space:nowrap; font-size:11px; letter-spacing:.09em; font-weight:800; padding:7px 12px; border-radius:20px; background:#e2ece9; color:var(--sea); }
+.metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:18px; }
+.metric { background:white; border:1px solid var(--line); border-radius:12px; padding:18px 20px; min-height:118px; }
+.metric span { display:block; color:var(--muted); font-size:12px; }
+.metric strong { display:block; margin-top:9px; font-size:32px; line-height:1.1; font-weight:800; }
+.split { display:grid; grid-template-columns:1.2fr .8fr; gap:16px; margin-bottom:18px; }
+.card { padding:26px; background:white; border:1px solid var(--line); border-radius:16px; }
+.card.pale { background:#eaf0ed; }
+.card-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:18px; }
+.card-heading small { color:var(--muted); font-size:11px; }
+.bar-row { margin:0 0 12px; }
+.bar-meta { display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:13px; margin-bottom:5px; }
+.bar-meta span:last-child { color:var(--sea); font-weight:700; }
+.track { border-radius:99px; height:8px; background:#e7eeee; overflow:hidden; }
+.fill { display:block; height:100%; border-radius:99px; background:var(--sea); }
+.compare { display:grid; grid-template-columns:repeat(2,1fr); gap:9px; margin:18px 0; }
+.compare>div { background:white; padding:13px; border-radius:10px; }
+.compare small,.compare span { display:block; font-size:11px; color:var(--muted); }
+.compare strong { display:block; font-size:31px; line-height:1.3; margin:6px 0; }
+.small-note { font-size:13px; color:#496166; line-height:1.65; margin-bottom:0; }
+.simulation { margin:14px 0; }
+.progress { height:5px; border-radius:20px; background:#e7eeee; margin:13px 0 24px; overflow:hidden; }
+.progress span { height:100%; display:block; background:var(--sea); transition:width .2s; }
+.question-kicker { color:var(--sea); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+.question-title { font-size:21px; line-height:1.35; font-weight:800; margin:8px 0 5px; }
+.question-context { color:var(--muted); font-size:14px; margin-bottom:16px; }
+.option { display:flex; align-items:flex-start; gap:13px; border:1px solid var(--line); border-radius:11px; padding:14px 16px; margin-top:8px; cursor:pointer; background:white; }
+.option:has(input:checked) { border-color:var(--sea); background:#ecf5f1; box-shadow:inset 0 0 0 1px var(--sea); }
+.option input { accent-color:var(--sea); flex:none; width:17px; height:17px; margin:3px 0 0; }
+.option strong { display:block; font-size:14px; line-height:1.5; }
+.option span { display:block; color:var(--muted); font-size:12px; line-height:1.6; margin-top:2px; }
+.sim-footer { display:flex; justify-content:space-between; gap:12px; margin-top:22px; }
+.result { background:#f1f6f3; border:1px solid #cbded6; padding:22px; border-radius:13px; margin-top:22px; }
+.result h3 { margin-bottom:12px; }
+.result p { font-size:14px; }
+.result .alert { background:#fff1e4; border:1px solid #e9cbaa; border-radius:9px; padding:12px; font-size:13px; color:#684223; }
+.result .good-note { background:#e1f1e8; border:1px solid #bcdbcb; border-radius:9px; padding:12px; font-size:13px; color:#255b44; }
+.result .report-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:18px; }
+.result dl { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:17px 0; }
+.result dl>div { background:white; border:1px solid var(--line); border-radius:10px; padding:12px; }
+.result dt { font-size:11px; color:var(--muted); }
+.result dd { margin:4px 0 0; font-size:22px; font-weight:800; }
+.howto { background:#ebf1ee; border-radius:12px; padding:16px 20px; margin-bottom:20px; }
+.howto-steps { display:flex; flex-wrap:wrap; gap:11px 19px; }
+.howto-steps span { font-size:12px; font-weight:800; }
+.howto p { font-size:12px; color:var(--muted); margin:9px 0 0; }
+.assessment-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; }
+.dimension { background:white; border:1px solid var(--line); border-radius:14px; padding:22px; }
+.dimension-head { display:flex; gap:11px; align-items:flex-start; margin-bottom:15px; }
+.dimension-num { background:#e9f0ec; width:32px; height:32px; flex:none; display:grid; place-content:center; border-radius:8px; color:var(--sea); font-weight:800; font-size:11px; }
+.dimension h3 { font-size:19px; margin:0; }
+.dimension .dim-desc { color:var(--muted); font-size:12px; margin:4px 0 0; }
+.assess-question { border-top:1px solid var(--line); padding-top:14px; margin-top:14px; }
+.assess-question .q-title { display:block; font-weight:700; font-size:13px; margin-bottom:8px; }
+.choice-row { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; }
+.choice-row label { position:relative; display:grid; justify-items:center; align-content:center; border:1px solid var(--line); border-radius:8px; padding:8px 3px; min-height:46px; text-align:center; font-size:10px; color:var(--muted); cursor:pointer; line-height:1.4; }
+.choice-row label:has(input:checked) { background:#e7f1ed; border-color:var(--sea); color:var(--ink); font-weight:750; }
+.choice-row label input { position:absolute; opacity:0; width:1px; height:1px; }
+.choice-row label:has(input:focus-visible) { outline:3px solid #4a9ba0; outline-offset:3px; }
+.assessment-actions { display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin:21px 0; }
+.assessment-actions span { margin-inline-end:auto; color:var(--muted); font-size:12px; }
+.result-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:11px; }
+.result-dimension { border:1px solid var(--line); padding:14px; background:white; border-radius:11px; }
+.result-dimension h4 { margin:0 0 8px; font-size:14px; }
+.result-dimension p { margin:8px 0 0; color:var(--muted); font-size:12px; }
+.result-dimension .bar-meta { margin-bottom:6px; }
+.method-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:15px; }
+.method-tile { padding:24px; background:white; border-radius:14px; border:1px solid var(--line); }
+.method-tile h3 { font-size:19px; }
+.method-tile p,.method-tile li { color:var(--muted); font-size:14px; }
+.method-tile ul { padding-inline-start:18px; }
+.method-tile a { color:var(--sea); font-weight:700; }
+.code-formula { display:block; padding:13px; background:#eff4f2; border:1px solid #dbe6e1; font-family:ui-monospace,monospace; font-size:13px; direction:ltr; text-align:left; overflow-wrap:anywhere; border-radius:8px; }
+.footer { border-top:1px solid var(--line); padding:26px 0 38px; margin-top:20px; display:flex; justify-content:space-between; align-items:flex-start; gap:20px; }
+.footer strong { font-size:15px; }.footer p,.footer-right { color:var(--muted); font-size:12px; margin:5px 0; }.footer-right { display:flex; align-items:flex-end; flex-direction:column; gap:9px; }.footer a { color:var(--sea); }
+@media (max-width:950px) { .hero { grid-template-columns:1fr; }.hero-art { min-height:280px; }.hero-main { min-height:0; }.split { grid-template-columns:1fr; }.metrics { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:680px) { .shell { width:calc(100% - 28px); }.topbar-inner { min-height:73px; }.version { display:none; }.hero { padding:18px 0 14px; gap:12px; }.hero-main { padding:26px 22px; }.hero-art { min-height:230px; }.tabs { margin:18px 0 8px; gap:6px; }.tab { padding:12px 10px; flex-direction:column; gap:4px; align-items:flex-start; font-size:11px; }.section-head { flex-direction:column; gap:8px; }.step-label { font-size:9px; }.metric { padding:13px; min-height:105px; }.card { padding:18px; }.assessment-grid,.method-grid,.result-grid { grid-template-columns:1fr; }.result dl { grid-template-columns:repeat(2,1fr); }.footer { flex-direction:column; }.footer-right { align-items:flex-start; }.choice-row label { font-size:9px; } }
+@media (prefers-reduced-motion:reduce) { html {scroll-behavior:auto;} .btn {transition:none;} }
+
+
+/* Unified personal brand: The Impact Connector */
+.brand-mark {background:#101D29;color:#C9F46B;border-radius:9px}.brand-mark span{color:#C9F46B}
+.hero-main{background:#101D29;color:#F5F1E8}.hero-main .eyebrow,.hero-main .authorship{color:#C9F46B}.hero-main h1{color:#fff}.hero-main .hero-lead,.hero-main .hero-meta{color:#DCE7E8}
+.btn.primary,.hero-main .btn.primary{background:#C9F46B;color:#101D29;border-color:#C9F46B}.btn.primary:hover{background:#B8E35A;border-color:#B8E35A}.hero-main .btn.muted{color:#F5F1E8;border-color:#8FA5AA;background:transparent}.hero-art{background:#14797F}.authorship{margin:14px 0 0;font-size:12px;line-height:1.6}
+</style>
+  
+  
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand"><div class="brand-mark" aria-hidden="true">IC<span>·</span></div><div><strong>The Impact Connector</strong><small id="brandSub">By Saddam Sayyaleh · Applied tools &amp; methods</small></div></div>
+      <div class="header-actions">
+        <span class="version">LAB / 01</span>
+        <div class="lang-switch" role="group" aria-label="Language selection">
+          <button id="langEn" type="button" aria-pressed="true">EN</button>
+          <button id="langAr" type="button" aria-pressed="false">العربية</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="shell">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow" id="heroEyebrow">THE IMPACT CONNECTOR / APPLIED AI WORKFLOW LAB</div>
+        <h1 id="heroTitle">AI adoption begins with understanding the work.</h1>
+        <p class="hero-lead" id="heroLead">Explore Ali's reporting challenge, assess your own organisation's readiness, and see the decision rules behind the recommendations.</p>
+        <div class="hero-actions">
+          <button class="btn primary" type="button" id="heroAssessment">Take the readiness assessment <span aria-hidden="true">↗</span></button>
+          <button class="btn muted" type="button" id="heroCase">Explore Ali's case</button>
+        </div>
+        <p class="authorship">Methodology and interactive demonstration designed and authored by <strong>Saddam Sayyaleh</strong> · The Impact Connector</p>
+        <div class="hero-meta"><span id="metaTime">5–7 minute self-assessment</span><span class="dot"></span><span id="metaPrivate">No sign-in. No information sent.</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-label">DIAGNOSE / DESIGN / TEST</div>
+        <div class="art-bubbles"><span class="node n1">01 <b>ASSESS</b></span><span class="node n2">02 <b>EVALUATE</b></span><span class="node n3">03 <b>PRIORITISE</b></span><span class="node n4">04 <b>PLAN</b></span></div>
+        <div class="art-foot">WORKFLOW THINKING<br/>BEFORE TOOL SELECTION</div>
+      </div>
+    </section>
+    <div class="notice" id="notice"><span class="notice-icon" aria-hidden="true">i</span><span id="noticeText">This is an educational, unvalidated prototype. Ali, the organisation and the data are constructed examples. Results are indicative, not an AI safety certification.</span></div>
+    <nav class="tabs" aria-label="Lab sections">
+      <button class="tab active" type="button" id="tabCase" data-panel="case" aria-selected="true"><span class="tab-index">01</span><span id="tabCaseText">Ali's case simulation</span></button>
+      <button class="tab" type="button" id="tabAssessment" data-panel="assessment" aria-selected="false"><span class="tab-index">02</span><span id="tabAssessmentText">Your readiness assessment</span></button>
+      <button class="tab" type="button" id="tabMethod" data-panel="method" aria-selected="false"><span class="tab-index">03</span><span id="tabMethodText">The technical model</span></button>
+    </nav>
+    <section id="panelCase" class="panel" aria-labelledby="tabCaseText">
+      <div class="section-head"><div><p class="eyebrow" id="caseEyebrow">A WORKED ORGANISATIONAL SCENARIO</p><h2 id="caseTitle">Meet Ali. The reports aren't the whole problem.</h2><p id="caseIntro">Ali oversees three youth programmes at a nonprofit in Jordan. Nine contributors provide monthly updates across spreadsheets, email and Word documents. His team spends a modelled 64 staff-hours preparing six reporting packages.</p></div><span class="step-label" id="caseLabel">CASE STUDY 01</span></div>
+      <div class="metrics">
+        <div class="metric"><span id="m1label">Active programmes</span><strong>3</strong></div>
+        <div class="metric"><span id="m2label">Contributors</span><strong>9</strong></div>
+        <div class="metric"><span id="m3label">Reporting packages</span><strong>6</strong></div>
+        <div class="metric"><span id="m4label">Staff-hours / month</span><strong>64</strong></div>
+      </div>
+      <div class="split">
+        <div class="card"><div class="card-heading"><h3 id="baselineTitle">Where the monthly time goes</h3><small id="baselineSub">Modelled staff-hours, all reporting staff</small></div><div id="baselineBars"></div></div>
+        <div class="card pale"><h3 id="sourceTitle">A closer look at the evidence</h3><p id="sourceIntro">Ali sees conflicting figures in one programme's records:</p><div class="compare"><div><small id="sourceA">Approved register</small><strong>118</strong><span id="sourceAl">Unique participants</span></div><div><small id="sourceB">Narrative draft</small><strong>126</strong><span id="sourceBl">Participants reached</span></div></div><p class="small-note" id="sourceNote">Both numbers might describe different indicators. The first task is to check definitions, not ask AI to choose one.</p></div>
+      </div>
+      <div class="simulation card"><div class="card-heading"><div><div class="eyebrow" id="simEyebrow">DECISION SIMULATION</div><h3 id="simTitle">You're advising Ali. What comes next?</h3></div><span class="progress-tag" id="caseProgress">Step 1 of 4</span></div><div class="progress"><span id="caseProgressBar" style="width:25%"></span></div><div id="caseQuestion"></div><div class="sim-footer"><button type="button" class="btn muted" id="caseBack">Back</button><button type="button" class="btn primary" id="caseNext">Next step <span aria-hidden="true">→</span></button></div><div id="caseResult" class="result hidden" aria-live="polite"></div></div>
+    </section>
+    <section id="panelAssessment" class="panel hidden" aria-labelledby="tabAssessmentText">
+      <div class="section-head"><div><p class="eyebrow" id="readEyebrow">ORGANISATIONAL SELF-ASSESSMENT</p><h2 id="readTitle">Is your organisation ready to test AI responsibly?</h2><p id="readIntro">Answer 12 evidence-focused questions across six areas. Choose the current state of your organisation, not what you plan to have in place. An uncertain answer remains uncertain in the report.</p></div><span class="step-label" id="readLabel">PRIVATE / IN BROWSER</span></div>
+      <div class="howto"><div class="howto-steps" id="readScale"></div><p id="readNote">No names, case notes, financial records or other confidential data are needed. Responses stay in this browser session unless you download the report.</p></div>
+      <div id="assessmentQuestions" class="assessment-grid"></div>
+      <div class="assessment-actions"><span id="assessmentProgress" aria-live="polite"></span><button id="assessmentCalculate" class="btn primary" type="button">View my assessment</button><button id="assessmentReset" class="btn muted" type="button">Clear answers</button></div>
+      <div class="result hidden" id="assessmentResult" aria-live="polite"></div>
+    </section>
+    <section id="panelMethod" class="panel hidden" aria-labelledby="tabMethodText">
+      <div class="section-head"><div><p class="eyebrow" id="methodEyebrow">OPEN TECHNICAL MODEL</p><h2 id="methodTitle">Understand the method behind the recommendation.</h2><p id="methodIntro">A transparent, deliberately bounded decision model. Reproduce the calculations, review the synthetic inputs and examine the safeguards before adapting it to your organisation.</p></div><span class="step-label" id="methodLabel">PROTOTYPE v0.1</span></div>
+      <div id="methodContent"></div>
+    </section>
+    <footer class="footer"><div><strong>Designed &amp; authored by Saddam Sayyaleh · The Impact Connector</strong><p id="footerTag">Strategic Partnerships, Social Innovation & International Development</p></div><div class="footer-right"><span id="footerDraft">Demonstration methodology · not a completed client engagement</span><a href="https://saddamsayyaleh.wordpress.com/" target="_blank" rel="noopener noreferrer">Website ↗</a></div></footer>
+  </main>
+<script>
+/* The Impact Connector - Applied AI Workflow Lab v0.1.
+   Entirely synthetic demonstration, with no network calls or visitor tracking. */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  root.LabModel = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const baseline = Object.freeze({
+    programmes: 3, contributors: 9, packages: 6,
+    monthlyHours: 64,
+    activities: Object.freeze([
+      {id:'collect',hours:12}, {id:'consolidate',hours:14},
+      {id:'resolve',hours:10}, {id:'draft',hours:14},
+      {id:'verify',hours:10}, {id:'approve',hours:4}
+    ])
+  });
+  const dimensions = Object.freeze([
+    { id:'process', questions:['process_documented','process_baseline'] },
+    { id:'data', questions:['data_definitions','data_permissions'] },
+    { id:'people', questions:['people_skills','people_review'] },
+    { id:'governance', questions:['governance_tool','governance_approval'] },
+    { id:'technology', questions:['technology_sources','technology_fit'] },
+    { id:'implementation', questions:['implementation_owner','implementation_evaluation'] }
+  ]);
+  const answerOptions = ['0','1','2','unknown'];
+  function scoreAssessment(answers) {
+    const response = answers || {};
+    const scores = dimensions.map(dim => {
+      let points=0, unknown=0, answered=0;
+      for (const id of dim.questions) {
+        const value = response[id];
+        if (!answerOptions.includes(String(value))) continue;
+        answered += 1;
+        if (value === 'unknown') unknown += 1;
+        else points += Number(value);
+      }
+      return {id:dim.id, points, maximum:4, percent:Math.round(points/4*100),
+        unknown, answered,
+        band:points===4 && unknown===0 ? 'documented' : points>=2 && unknown===0 ? 'developing' : 'foundation'};
+    });
+    const allAnswered = scores.every(x=>x.answered===2);
+    const gateRequirements = ['data_permissions','governance_tool','governance_approval'];
+    const missingGates = gateRequirements.filter(id=>response[id]!== '2');
+    const areas = scores.filter(s=>s.points<4 || s.unknown>0).map(s=>s.id);
+    return {scores, allAnswered, missingGates, areas,
+      permittedNextStep:missingGates.length ? 'synthetic_only' : 'controlled_pilot_review',
+      unknownCount:scores.reduce((n,s)=>n+s.unknown,0)};
+  }
+  const caseChoices = Object.freeze({
+    diagnosis:['fragmented_inputs','writing_time','missing_ai'],
+    intervention:['process','ai_only','combined','auto_approval'],
+    controls:['approved','partial','none'],
+    evaluation:['quality_cost_risk','speed_only','informal']
+  });
+  function evaluateCase(choices) {
+    const c = Object.assign({diagnosis:'fragmented_inputs',intervention:'combined',controls:'approved',evaluation:'quality_cost_risk'},choices||{});
+    for(const [key,values] of Object.entries(caseChoices)) {
+      if(!values.includes(c[key])) throw new Error('Invalid case selection: '+key);
+    }
+    const automated = c.intervention === 'auto_approval';
+    const aiRequested = ['ai_only','combined'].includes(c.intervention);
+    const aiPermitted = aiRequested && c.controls==='approved';
+    let hours = baseline.monthlyHours;
+    if(c.intervention==='process' || c.intervention==='combined') hours -= 12;
+    if(aiPermitted) hours -= 6;
+    // No unreviewed automated approval is permitted in this scenario.
+    if(automated) hours = baseline.monthlyHours;
+    const blocked = automated || (aiRequested && !aiPermitted);
+    const evaluationSufficient = c.evaluation==='quality_cost_risk';
+    return {
+      choices:c, hours, changeHours:baseline.monthlyHours-hours,
+      percentChange:Math.round((baseline.monthlyHours-hours)/baseline.monthlyHours*100),
+      blocked, automated, aiPermitted, evaluationSufficient,
+      diagnosisSupported:c.diagnosis==='fragmented_inputs',
+      scaleRecommendation:!blocked && evaluationSufficient ? 'test_then_review' : 'not_ready',
+      label: automated ? 'rejected' : blocked ? 'controls_missing' : evaluationSufficient ? 'test' : 'evaluation_missing'
+    };
+  }
+  return { baseline, dimensions, answerOptions, caseChoices, scoreAssessment, evaluateCase };
+});
+
+</script>
+<script>
+/* Bilingual client-side interface, all choices and scoring are computed locally. */
+(() => {
+'use strict';
+const model = window.LabModel;
+if (!model) { document.body.insertAdjacentHTML('afterbegin','<p>Could not load local scoring model.</p>'); return; }
+const state={lang:'en',tab:'case',caseStep:0,caseAnswers:{},caseReport:false,assessment:{},assessmentShown:false};
+const dictionary={
+ en:{
+  brandSub:'By Saddam Sayyaleh · Applied tools & methods',heroEyebrow:'THE IMPACT CONNECTOR / APPLIED AI WORKFLOW LAB',heroTitle:'AI adoption begins with understanding the work.',
+  heroLead:"Explore Ali's reporting challenge, assess your own organisation's readiness, and see the decision rules behind the recommendations.",
+  heroAssessment:'Take the readiness assessment',heroCase:"Explore Ali's case",metaTime:'5–7 minute self-assessment',metaPrivate:'No sign-in. No information sent.',
+  noticeText:'Review prototype. Ali, the organisation and all numbers are constructed examples. Results are indicative, not an AI safety certification.',
+  tabCaseText:"Ali's case simulation",tabAssessmentText:'Your readiness assessment',tabMethodText:'The technical model',
+  caseEyebrow:'A WORKED ORGANISATIONAL SCENARIO',caseTitle:"Meet Ali. The reports aren't the whole problem.",
+  caseIntro:'Ali oversees three youth programmes at a nonprofit in Jordan. Nine contributors provide monthly updates across spreadsheets, email and Word documents. His team spends a modelled 64 staff-hours preparing six reporting packages.',
+  caseLabel:'CASE STUDY 01',m1label:'Active programmes',m2label:'Contributors',m3label:'Reporting packages',m4label:'Staff-hours / month',
+  baselineTitle:'Where the monthly time goes',baselineSub:'Modelled staff-hours, all reporting staff',sourceTitle:'A closer look at the evidence',
+  sourceIntro:"Ali sees figures that don't appear to match in one programme's records:",sourceA:'Approved register',sourceAl:'Unique participants',sourceB:'Narrative draft',sourceBl:'Participants reached',
+  sourceNote:'Both figures may be valid if they describe different indicators. Verify definitions before asking any tool to reconcile them.',
+  simEyebrow:'DECISION SIMULATION',simTitle:"You're advising Ali. What comes next?",caseProgress:n=>`Step ${n} of 4`,
+  caseNext:'Next step',caseBack:'Back',caseFinish:'Show decision report',caseAgain:'Revise decisions',
+  readEyebrow:'ORGANISATIONAL SELF-ASSESSMENT',readTitle:'Is your organisation ready to test AI responsibly?',
+  readIntro:'Answer 12 evidence-focused questions across six areas. Choose the current state of your organisation, not its intended future state. An uncertain answer remains uncertain in the report.',
+  readLabel:'PRIVATE / IN BROWSER',readNote:'Do not enter names, case notes, financial records or confidential information. Your selections stay in this browser session unless you download a report.',
+  scale:['0 · Not in place','1 · Partly in place','2 · In place + evidenced','? · Not sure'],
+  assessmentProgress:n=>`${n} of 12 answered`,assessmentCalculate:'View my assessment',assessmentReset:'Clear answers',assessmentMissing:'Please answer every question, including “Not sure” where appropriate.',
+  methodEyebrow:'OPEN TECHNICAL MODEL',methodTitle:'Understand the method behind the recommendation.',
+  methodIntro:'A transparent, deliberately bounded decision model. Reproduce calculations, review the synthetic inputs and examine the safeguards before adapting this approach.',
+  methodLabel:'PROTOTYPE v0.1',footerTag:'Strategic Partnerships, Social Innovation & International Development',footerDraft:'Methodology demonstration · not a completed client engagement',
+  activity:['Collect and chase updates','Consolidate data and files','Resolve inconsistencies','Prepare bilingual narratives','Verify sources and content','Final revisions and approval'],
+  caseSteps:[
+   {tag:'01 / ASSESS',title:'What problem should Ali investigate first?',intro:'The team spends 36 of 64 hours collecting, consolidating and resolving data. Choose the most defensible initial diagnosis.',choices:[['fragmented_inputs','Reporting inputs and definitions are fragmented','Map the workflow, improve input consistency and validate indicators.'],['writing_time','Writing is the only bottleneck','Concentrate on drafting speed, leaving upstream rework unexamined.'],['missing_ai','The organisation lacks an AI tool','Choose technology before identifying the operational constraint.']]},
+   {tag:'02 / EVALUATE & PRIORITISE',title:'Which improvement should Ali pursue?',intro:'Compare organisational improvements with controlled AI assistance. Each option has different dependencies.',choices:[['process','Standardise the reporting process first','Common templates, indicator definitions and review responsibilities.'],['ai_only','Test AI drafting without fixing the inputs','Might reduce writing time but leaves fragmented source information.'],['combined','Standardise first, then pilot AI-assisted drafting','Sequence process improvements before a bounded, reviewed AI test.'],['auto_approval','Let AI approve and submit reports','Removes human sign-off; not permitted in this scenario.']]},
+   {tag:'03 / SAFEGUARDS',title:'What controls will be in place?',intro:'An AI pilot requires approved inputs, authorised tools and named human reviewers. Choose the controls in the proposed plan.',choices:[['approved','Approved tool, safe inputs and human review','The authorised team can test controlled drafting using permitted data.'],['partial','Some controls are unresolved','Proceed with process changes, but defer the AI component.'],['none','No formal approval or review controls','Do not move an AI tool into this operational workflow.']]},
+   {tag:'04 / EVALUATION',title:'What evidence will determine whether the pilot continues?',intro:'The team must evaluate the complete workflow, not just the quality or speed of one draft.',choices:[['quality_cost_risk','Accuracy, staff time, cost, risk and usability','Define baselines, thresholds and a human approval gate.'],['speed_only','Time saved on AI drafting alone','Misses correction effort, costs and substantive reporting errors.'],['informal','Staff impressions without a test protocol','Useful feedback, but insufficient to establish operational value.']]}
+  ],
+  intervention:['Process redesign','AI drafting only','Process redesign + controlled AI','Unreviewed automated approval'],
+  scoreCaseTitle:'Your implementation scenario',scoreBase:'Constructed baseline',scoreModel:'Modelled monthly effort',scoreChange:'Modelled reduction',
+  scoreCasePassed:'Eligible for controlled testing, subject to actual review and approval.',scoreCaseBlocked:'AI component blocked: governance or approval conditions are not met.',
+  scoreAuto:'Automated approval is rejected. Staff remain responsible for reporting judgements and external submissions.',
+  scoreEval:'A reliable scale-up decision is not possible with the chosen evaluation approach.',
+  scoreDiag:'The selected diagnosis does not address the largest measured workload components. Revisit the upstream reporting process.',
+  scoreAssumptions:'Illustrative calculations only. They exclude transition effort, AI fees, training costs and any newly observed errors. No savings are verified.',
+  scoreCaseOutcome:'Planning recommendation',scoreScale:'Pilot is a test, not permission for unattended or live deployment.',
+  downloadCase:'Download case report (.json)',downloadAssessment:'Download assessment (.json)',
+  readResultTitle:'Your organisational readiness profile',readResultCaution:'This is a self-assessment, not an audit or certification.',
+  readGateTitle:'Operational AI use: decision gate',readGateBlocked:'Do not proceed with live operational AI inputs. Use synthetic examples while resolving the requirements below.',
+  readGateConditional:'Core prerequisites are self-reported as evidenced. A formal tool, privacy and risk review is still needed before live deployment.',
+  readUnknown:'“Not sure” answers are treated as unverified for planning, not proof that a capability is absent.',
+  readAreasTitle:'Priority capability gaps',readNoGaps:'All statements were self-reported as evidenced. Verify controls independently and set a scoped pilot before deployment.',
+  readCriteria:'Assessment areas',readNeed:'Recommended next action',readBand:{documented:'Evidenced',developing:'Developing',foundation:'Needs evidence'},
+  dim:{
+    process:['Processes and baselines','Can the team see where work happens and measure it?','Map the workflow and record current time, rework and quality issues.'],
+    data:['Data and information','Are source definitions and permissions reliable?','Define indicators, data classifications, access permissions and approved source records.'],
+    people:['People and verification','Can staff question and check AI-assisted outputs?','Train reviewers on verification, bilingual quality and escalation.'],
+    governance:['Governance and accountability','Are tools authorised and decisions owned by staff?','Approve tools, record risk controls and assign explicit human sign-off.'],
+    technology:['Systems and integration','Can the workflow operate with existing information systems?','Inventory systems and test interoperability and access controls.'],
+    implementation:['Pilot delivery','Can the team own, evaluate and sustain a controlled experiment?','Assign an owner, resources, thresholds and a stop/review decision.']
+  },
+  questions:{
+    process_documented:'Is the current workflow documented, with clear responsibilities?',process_baseline:'Do you measure effort, delays and quality before introducing technology?',
+    data_definitions:'Are the relevant data fields and indicators consistently defined?',data_permissions:'Do you have a documented rule for what information may enter an approved AI tool?',
+    people_skills:'Have relevant staff been trained in AI limitations and verification?',people_review:'Can a named reviewer verify sources, languages and key claims?',
+    governance_tool:'Has a responsible authority approved the proposed tool and its data terms?',governance_approval:'Is human approval required before AI-assisted decisions or external reporting?',
+    technology_sources:'Can staff reliably access authoritative source documents?',technology_fit:'Has the proposed tool been checked for fit with existing systems and constraints?',
+    implementation_owner:'Is an accountable pilot owner assigned with time and resources?',implementation_evaluation:'Are measurable success, failure and stopping criteria agreed in advance?'
+  },
+  gateDescriptions:{data_permissions:'Approved data-input rules',governance_tool:'Tool and data-terms approval',governance_approval:'Human sign-off and accountability'},
+  methodCards:[
+    ['Four-step operating method','<b>Assess</b> the current workflow; <b>Evaluate</b> feasible interventions; <b>Prioritise</b> value and safeguards; <b>Plan</b> a bounded pilot.'],
+    ['Workload calculations','Constructed baseline: 12 + 14 + 10 + 14 + 10 + 4 = <b>64 staff-hours</b>. Process redesign is modelled at 52 hours; adding controlled drafting yields 46 hours. No impact has been measured.'],
+    ['Readiness evidence model','Six dimensions, two statements each. Responses score 0, 1 or 2 evidence points. “Not sure” earns no verified points and is separately flagged. Dimensions are reported individually, not as a certification.'],
+    ['Non-negotiable gates','A live AI pilot cannot be recommended without documented input permissions, authorised tool/data terms and human approval. The score cannot override these gates.'],
+    ['Data and privacy','The demonstration uses synthetic aggregate data only; no personal information is needed. Answers are processed in your browser. No external service receives them.'],
+    ['Reuse and independent review','Inspect model.js for the calculation rules, /data for example inputs and /docs for definitions, limitations and adaptation guidance. Validate before reuse.']
+  ],
+  methodLinks:['Read methodology','Scoring rules','Synthetic input data','Implementation notes'],
+  noData:'None provided',reviewOnly:'Planning exercise only · no operational authorisation',copyNotNeeded:'Download saves a local JSON report. Nothing is uploaded.'
+ },
+ ar:{
+  brandSub:'إعداد وتصميم صدام صيايلة · أدوات ومنهجيات تطبيقية',heroEyebrow:'ذا إمباكت كونكتور / مختبر تصميم سير العمل والذكاء الاصطناعي',heroTitle:'تبنّي الذكاء الاصطناعي يبدأ بفهم طريقة العمل.',
+  heroLead:'تعرّف على التحدّي الذي يواجه علي في إعداد التقارير، وقيّم جاهزية مؤسستك، واطّلع على القواعد التي تستند إليها التوصيات.',
+  heroAssessment:'قيّم جاهزية مؤسستك',heroCase:'استكشف حالة علي',metaTime:'تقييم ذاتي في ٥–٧ دقائق',metaPrivate:'دون تسجيل أو إرسال بيانات',
+  noticeText:'هذه نسخة تجريبية للمراجعة. شخصية علي والمؤسسة وجميع الأرقام أمثلة مُنشأة للتوضيح، والنتائج إرشادية وليست شهادة تؤكد سلامة استخدام الذكاء الاصطناعي.',
+  tabCaseText:'محاكاة حالة علي',tabAssessmentText:'تقييم جاهزية مؤسستك',tabMethodText:'النموذج الفني الكامل',
+  caseEyebrow:'حالة تنظيمية مشروحة خطوة بخطوة',caseTitle:'تعرّف على علي: كتابة التقارير ليست المشكلة كلها.',
+  caseIntro:'يشرف علي على ثلاثة برامج للشباب في مؤسسة غير ربحية بالأردن. يرسل تسعة موظفين تحديثاتهم الشهرية عبر الجداول الإلكترونية والبريد والملفات النصية. ووفق بيانات المثال، يحتاج الفريق إلى ٦٤ ساعة عمل لإعداد ست حزم تقارير شهرياً.',
+  caseLabel:'الحالة التطبيقية ٠١',m1label:'البرامج النشطة',m2label:'المساهمون في التقارير',m3label:'حزم التقارير',m4label:'ساعات العمل شهرياً',
+  baselineTitle:'كيف يتوزّع وقت الفريق؟',baselineSub:'ساعات افتراضية تشمل جميع المشاركين في إعداد التقارير',sourceTitle:'لننظر إلى الأدلة عن قرب',
+  sourceIntro:'يجد علي رقمين يبدوان متعارضين في سجلات أحد البرامج:',sourceA:'سجل الحضور المعتمد',sourceAl:'المشاركون الفريدون',sourceB:'المسودة السردية',sourceBl:'الأشخاص الذين وصل إليهم البرنامج',
+  sourceNote:'قد يكون الرقمان صحيحين إذا كان لكل منهما تعريف مختلف. يجب التحقق من معنى المؤشر قبل الطلب من أي أداة توحيد الرقمين.',
+  simEyebrow:'محاكاة اتخاذ القرار',simTitle:'أنت مستشار علي. ما الخطوة التالية؟',caseProgress:n=>`الخطوة ${n} من ٤`,
+  caseNext:'الخطوة التالية',caseBack:'السابق',caseFinish:'اعرض تقرير القرار',caseAgain:'غيّر اختياراتك',
+  readEyebrow:'تقييم ذاتي للمؤسسات',readTitle:'هل مؤسستك جاهزة لاختبار الذكاء الاصطناعي بمسؤولية؟',
+  readIntro:'أجب عن ١٢ سؤالاً تستند إلى الأدلة، موزعة على ستة محاور. اختر الوضع القائم فعلاً، لا ما تنوي المؤسسة تحقيقه لاحقاً. وسنُبقي الإجابات غير المؤكدة واضحة في التقرير.',
+  readLabel:'خاص / داخل المتصفح',readNote:'لا تُدخل أسماء أشخاص أو تفاصيل حالات أو بيانات مالية أو معلومات سرية. تبقى اختياراتك في جلسة المتصفح ما لم تقم بتنزيل التقرير.',
+  scale:['٠ · غير متوفر','١ · متوفر جزئياً','٢ · متوفر وموثّق','؟ · غير متأكد'],
+  assessmentProgress:n=>`تمت الإجابة عن ${n} من ١٢`,assessmentCalculate:'اعرض نتيجة التقييم',assessmentReset:'امسح الإجابات',assessmentMissing:'يرجى الإجابة عن جميع الأسئلة، ويمكن اختيار «غير متأكد» عند الحاجة.',
+  methodEyebrow:'النموذج الفني المفتوح',methodTitle:'افهم المنهجية التي تقف وراء التوصيات.',
+  methodIntro:'نموذج واضح ومحدود النطاق لاتخاذ القرار. يمكنك مراجعة حساباته وبياناته التجريبية وضوابطه قبل التفكير في استخدامه داخل مؤسستك.',
+  methodLabel:'نسخة تجريبية ٠.١',footerTag:'الشراكات الاستراتيجية والابتكار الاجتماعي والتنمية الدولية',footerDraft:'نموذج منهجي توضيحي · ليس مشروعاً منفّذاً لعميل',
+  activity:['جمع التحديثات ومتابعتها','دمج الملفات والبيانات','معالجة التباينات','إعداد النصوص بالعربية والإنجليزية','مراجعة المصادر والمحتوى','التعديلات النهائية وإجراءات الاعتماد'],
+  caseSteps:[
+   {tag:'٠١ / التقييم الأولي',title:'ما المشكلة التي ينبغي لعلي فحصها أولاً؟',intro:'يقضي الفريق ٣٦ ساعة من أصل ٦٤ في جمع البيانات ودمجها وحل التباينات. اختر التشخيص الأقرب إلى الأدلة.',choices:[['fragmented_inputs','المدخلات والتعريفات غير موحّدة','تتبّع الخطوات، ونظّم المدخلات، وتحقق من تعريف المؤشرات.'],['writing_time','الكتابة هي المشكلة الوحيدة','التركيز على سرعة المسودات مع تجاهل إعادة العمل في المراحل السابقة.'],['missing_ai','المؤسسة تفتقر إلى أداة ذكاء اصطناعي','اختيار التقنية قبل تحديد الخلل التشغيلي.']]},
+   {tag:'٠٢ / دراسة البدائل وترتيبها',title:'أي تحسين ينبغي لعلي اختياره؟',intro:'قارن بين تحسين طريقة العمل والاستعانة بالذكاء الاصطناعي ضمن نطاق محدد.',choices:[['process','توحيد آلية إعداد التقارير أولاً','قوالب مشتركة وتعريفات واضحة للمؤشرات ومسؤوليات محددة للمراجعة.'],['ai_only','اختبار صياغة المسودات بالذكاء الاصطناعي دون إصلاح المدخلات','قد يخفّف وقت الكتابة لكنه لا يعالج تشتّت المعلومات.'],['combined','توحيد العمل أولاً، ثم اختبار الصياغة بمساعدة الذكاء الاصطناعي','معالجة المشكلات الأساسية قبل تجربة محدودة تخضع للمراجعة.'],['auto_approval','ترك اعتماد التقارير وإرسالها للذكاء الاصطناعي','يلغي الاعتماد البشري؛ وهو خيار غير مسموح به في هذه الحالة.']]},
+   {tag:'٠٣ / ضوابط الاستخدام',title:'ما الضوابط المتوفرة في الخطة؟',intro:'تحتاج التجربة إلى بيانات مسموح باستخدامها، وأداة معتمدة، ومراجعين مسؤولين.',choices:[['approved','أداة معتمدة ومدخلات آمنة ومراجعة بشرية','يمكن للفريق المخوّل اختبار إعداد المسودات ضمن نطاق مصرح به.'],['partial','بعض متطلبات الحوكمة لم تُحسم','ننفّذ التحسينات الإدارية ونؤجل استخدام الذكاء الاصطناعي.'],['none','لا توجد موافقات أو آلية مراجعة رسمية','لا ينبغي إدخال الذكاء الاصطناعي إلى سير العمل التشغيلي.']]},
+   {tag:'٠٤ / قياس النتائج',title:'كيف نقرر إن كانت التجربة تستحق الاستمرار؟',intro:'يجب تقييم سير العمل كاملاً، لا سرعة إنتاج المسودة وحدها.',choices:[['quality_cost_risk','الدقة ووقت الفريق والتكلفة والمخاطر وسهولة الاستخدام','اعتماد خط أساس ومعايير واضحة وحدّ للموافقة البشرية.'],['speed_only','الوقت الذي وفرته كتابة المسودة فقط','يتجاهل وقت التصحيح والتكاليف والأخطاء المحتملة.'],['informal','الانطباعات العامة دون خطة اختبار','الآراء مفيدة، لكنها لا تكفي لإثبات جدوى التطبيق.']]}
+  ],
+  intervention:['إعادة تنظيم العمل','صياغة المسودات بالذكاء الاصطناعي فقط','تحسين العملية ثم اختبار الذكاء الاصطناعي','اعتماد وإرسال تلقائي دون مراجعة'],
+  scoreCaseTitle:'نتيجة سيناريو التنفيذ',scoreBase:'خط الأساس الافتراضي',scoreModel:'ساعات العمل المتوقعة في النموذج',scoreChange:'الانخفاض الافتراضي',
+  scoreCasePassed:'يمكن الانتقال إلى اختبار محدود بعد استكمال المراجعة والموافقات الفعلية.',scoreCaseBlocked:'تعطّل مكوّن الذكاء الاصطناعي بسبب نقص الموافقات أو الضوابط.',
+  scoreAuto:'يُرفض الاعتماد التلقائي دون مراجعة. يتحمل الموظفون مسؤولية التحقق والقرارات وإرسال التقارير.',
+  scoreEval:'لا يمكن اتخاذ قرار موثوق بتوسيع الاستخدام وفق طريقة التقييم المختارة.',
+  scoreDiag:'التشخيص المختار لا يعالج الأنشطة الأكثر استهلاكاً للوقت في البيانات. راجع مراحل جمع المعلومات وتوحيدها.',
+  scoreAssumptions:'هذه حسابات توضيحية وليست نتائج مثبتة. لا تشمل كلفة التحول أو رسوم الأدوات أو التدريب أو أخطاء إضافية قد تظهر. لم يتم التحقق من أي وفورات.',
+  scoreCaseOutcome:'الخطوة المقترحة',scoreScale:'التجربة ليست إذناً بالتشغيل الآلي أو معالجة بيانات حقيقية.',
+  downloadCase:'نزّل تقرير الحالة (.json)',downloadAssessment:'نزّل تقرير التقييم (.json)',
+  readResultTitle:'ملف جاهزية مؤسستك',readResultCaution:'هذا تقييم ذاتي وليس تدقيقاً مستقلاً أو شهادة اعتماد.',
+  readGateTitle:'شرط الانتقال للاستخدام الفعلي',readGateBlocked:'لا تنتقل إلى إدخال بيانات تشغيلية حقيقية في أدوات الذكاء الاصطناعي. استخدم بيانات تجريبية إلى أن تُستكمل المتطلبات التالية.',
+  readGateConditional:'المتطلبات الأساسية موثّقة بحسب إجاباتك، لكن يجب إجراء مراجعة فعلية للأداة والخصوصية والمخاطر قبل أي تشغيل حقيقي.',
+  readUnknown:'نعتبر إجابة «غير متأكد» دليلاً غير متحقق منه لأغراض التخطيط، وليس دليلاً على غياب القدرة.',
+  readAreasTitle:'الفجوات التي تستحق المعالجة',readNoGaps:'أشرت إلى توثيق جميع البنود. لا يزال من الضروري التحقق المستقل من الضوابط وتحديد تجربة محدودة قبل التطبيق.',
+  readCriteria:'محاور التقييم',readNeed:'الخطوة المقترحة',readBand:{documented:'موثّق',developing:'قيد التطوير',foundation:'يحتاج أدلة'},
+  dim:{
+    process:['العمليات وخط الأساس','هل نفهم خطوات العمل ونستطيع قياسها؟','وثّق العملية وقِس الوقت وإعادة العمل ومشكلات الجودة.'],
+    data:['البيانات والمعلومات','هل المصادر والتعريفات والصلاحيات واضحة؟','وحّد المؤشرات، وصنّف البيانات، وحدّد الصلاحيات والمصادر المسموح بها.'],
+    people:['المهارات والمراجعة','هل يستطيع الموظفون التحقق من المخرجات؟','درّب المراجعين على التحقق من المصادر والمحتوى باللغتين وآلية التصعيد.'],
+    governance:['الحوكمة والمساءلة','هل الأدوات معتمدة والقرارات بيد أشخاص محددين؟','اعتمد الأدوات وسجّل المخاطر وحدّد مسؤولاً عن الموافقة البشرية.'],
+    technology:['الأنظمة والتكامل','هل يمكن للحل العمل مع الأنظمة القائمة؟','احصر الأنظمة واختبر توافق الأدوات وصلاحيات الوصول.'],
+    implementation:['إدارة التجربة','هل توجد قدرة لإدارة تجربة محدودة وتقييمها؟','حدّد مسؤولاً وموارد ومعايير للنجاح والتوقف والمراجعة.']
+  },
+  questions:{
+    process_documented:'هل خطوات العمل الحالية موثّقة ومسؤولياتها واضحة؟',process_baseline:'هل تقيسون الجهد والتأخير والجودة قبل إدخال تقنية جديدة؟',
+    data_definitions:'هل حقول البيانات ومؤشرات البرامج ذات تعريفات موحّدة؟',data_permissions:'هل لديكم قواعد موثّقة لما يجوز إدخاله في أداة ذكاء اصطناعي معتمدة؟',
+    people_skills:'هل تلقّى الموظفون المعنيون تدريباً على حدود الذكاء الاصطناعي وكيفية التحقق منه؟',people_review:'هل يوجد مراجع محدد يستطيع التحقق من المصادر واللغتين والمعلومات الأساسية؟',
+    governance_tool:'هل وافقت جهة مخوّلة على الأداة المقترحة وشروط معالجة البيانات فيها؟',governance_approval:'هل تشترط المؤسسة موافقة بشرية قبل القرارات أو التقارير التي ساعد الذكاء الاصطناعي في إعدادها؟',
+    technology_sources:'هل يستطيع الموظفون الوصول إلى المصادر المعتمدة بوضوح وانتظام؟',technology_fit:'هل جرى التحقق من توافق الأداة المقترحة مع الأنظمة والقيود القائمة؟',
+    implementation_owner:'هل يوجد مسؤول واضح عن التجربة ولديه وقت وموارد كافية؟',implementation_evaluation:'هل اتُفق مسبقاً على معايير قابلة للقياس للنجاح والفشل والتوقف؟'
+  },
+  gateDescriptions:{data_permissions:'قواعد استخدام البيانات',governance_tool:'اعتماد الأداة وشروط البيانات',governance_approval:'المراجعة البشرية والمساءلة'},
+  methodCards:[
+    ['منهجية من أربع مراحل','<b>تقييم الواقع</b> وفهم سير العمل، ثم <b>دراسة البدائل</b>، و<b>ترتيب الأولويات</b>، ثم <b>تخطيط تجربة</b> محددة يمكن قياسها.'],
+    ['حساب الجهد التشغيلي','خط الأساس الافتراضي: ١٢ + ١٤ + ١٠ + ١٤ + ١٠ + ٤ = <b>٦٤ ساعة عمل</b>. نموذج تحسين العملية يصل إلى ٥٢ ساعة، ومع إضافة صياغة مضبوطة تصبح ٤٦ ساعة. هذه افتراضات وليست نتائج مثبتة.'],
+    ['نموذج إثبات الجاهزية','ستة محاور، لكل محور سؤالان. تمنح الإجابات صفرًا أو نقطة أو نقطتين بحسب توافر الأدلة. وتُسجّل إجابات «غير متأكد» على حدة. لا تتحول النتائج إلى شهادة جاهزية.'],
+    ['شروط لا تتجاوزها النقاط','لا نوصي بإدخال بيانات تشغيلية حقيقية دون قواعد موثّقة للمدخلات، وأداة معتمدة، ومسؤولية بشرية واضحة عن الموافقة.'],
+    ['البيانات والخصوصية','تعتمد المحاكاة على بيانات تجريبية إجمالية فقط. لا يحتاج التقييم إلى معلومات شخصية، وتُعالج الإجابات محلياً داخل المتصفح.'],
+    ['إعادة الاستخدام والمراجعة','تتضمن الحزمة ملف model.js لقواعد الحساب، وملفات /data للبيانات التجريبية، و/docs للمنهجية وحدود استخدامها. يجب التحقق من النموذج قبل تبنّيه.']
+  ],
+  methodLinks:['اقرأ المنهجية','قواعد التقييم','ملفات البيانات التجريبية','ملاحظات التطبيق'],
+  noData:'لا يوجد',reviewOnly:'تمرين تخطيطي · لا يمنح إذناً بالتطبيق الفعلي',copyNotNeeded:'سيُحفظ ملف JSON على جهازك، دون رفع أي بيانات.'
+ }
+};
+const ids=['brandSub','heroEyebrow','heroTitle','heroLead','metaTime','metaPrivate','noticeText','tabCaseText','tabAssessmentText','tabMethodText','caseEyebrow','caseTitle','caseIntro','caseLabel','m1label','m2label','m3label','m4label','baselineTitle','baselineSub','sourceTitle','sourceIntro','sourceA','sourceAl','sourceB','sourceBl','sourceNote','simEyebrow','simTitle','readEyebrow','readTitle','readIntro','readLabel','readNote','methodEyebrow','methodTitle','methodIntro','methodLabel','footerTag','footerDraft'];
+const $=id=>document.getElementById(id);
+const tr=()=>dictionary[state.lang];
+const htmlSafe=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function buttonLabel(id,key){$(id).textContent=tr()[key];}
+function langChange(lang){
+ state.lang=lang;
+ document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ $('langEn').setAttribute('aria-pressed',String(lang==='en'));$('langAr').setAttribute('aria-pressed',String(lang==='ar'));
+ ids.forEach(id=>{ if($(id)) $(id).textContent=tr()[id]; });
+ buttonLabel('heroAssessment','heroAssessment');buttonLabel('heroCase','heroCase');buttonLabel('caseBack','caseBack');buttonLabel('assessmentCalculate','assessmentCalculate');buttonLabel('assessmentReset','assessmentReset');
+ drawBaseline();drawCase();drawAssessment();drawMethod();
+}
+function switchTab(tab,scroll=true){state.tab=tab;['case','assessment','method'].forEach(name=>{ const on=name===tab;$('panel'+name.charAt(0).toUpperCase()+name.slice(1)).classList.toggle('hidden',!on); $('tab'+name.charAt(0).toUpperCase()+name.slice(1)).classList.toggle('active',on);$('tab'+name.charAt(0).toUpperCase()+name.slice(1)).setAttribute('aria-selected',String(on)); });
+ if(scroll){const target=$('tabCase');target?.parentElement?.scrollIntoView({behavior:'smooth',block:'start'});}
+}
+function drawBaseline(){ $('baselineBars').innerHTML=model.baseline.activities.map((row,i)=>`<div class="bar-row"><div class="bar-meta"><span>${htmlSafe(tr().activity[i])}</span><span>${row.hours} h</span></div><div class="track"><span class="fill" style="width:${row.hours/14*100}%"></span></div></div>`).join(''); }
+function drawCase(){
+ const a=tr(),index=state.caseStep,step=a.caseSteps[index],key=['diagnosis','intervention','controls','evaluation'][index],selected=state.caseAnswers[key];
+ $('caseProgress').textContent=a.caseProgress(index+1);$('caseProgressBar').style.width=`${25*(index+1)}%`;
+ $('caseQuestion').innerHTML=`<div class="question-kicker">${htmlSafe(step.tag)}</div><div class="question-title">${htmlSafe(step.title)}</div><p class="question-context">${htmlSafe(step.intro)}</p><div role="radiogroup" aria-label="${htmlSafe(step.title)}">${step.choices.map(([v,label,detail])=>`<label class="option"><input type="radio" name="case-${key}" value="${v}" ${selected===v?'checked':''}/><div><strong>${htmlSafe(label)}</strong><span>${htmlSafe(detail)}</span></div></label>`).join('')}</div>`;
+ document.querySelectorAll(`input[name="case-${key}"]`).forEach(input=>input.addEventListener('change',()=>{state.caseAnswers[key]=input.value;state.caseReport=false;drawCase();}));
+ $('caseBack').disabled=index===0;$('caseNext').disabled=!selected;$('caseNext').textContent=index===3?a.caseFinish:a.caseNext;
+ $('caseResult').classList.toggle('hidden',!state.caseReport);
+ if(state.caseReport) drawCaseReport();
+}
+function caseNext(){if(!state.caseAnswers[['diagnosis','intervention','controls','evaluation'][state.caseStep]])return;if(state.caseStep<3){state.caseStep++;state.caseReport=false;drawCase();} else {state.caseReport=true;drawCase();$('caseResult').scrollIntoView({behavior:'smooth',block:'nearest'});} }
+function caseBack(){state.caseStep=Math.max(0,state.caseStep-1);state.caseReport=false;drawCase();}
+function drawCaseReport(){
+ const a=tr(),r=model.evaluateCase(state.caseAnswers),message=r.automated?a.scoreAuto:r.blocked?a.scoreCaseBlocked:a.scoreCasePassed;
+ let notes=[];if(!r.diagnosisSupported)notes.push(a.scoreDiag);if(!r.evaluationSufficient)notes.push(a.scoreEval);notes.push(a.scoreAssumptions);
+ $('caseResult').innerHTML=`<h3>${a.scoreCaseTitle}</h3><div class="${r.blocked?'alert':'good-note'}">${message}</div><dl><div><dt>${a.scoreBase}</dt><dd>64 h</dd></div><div><dt>${a.scoreModel}</dt><dd>${r.hours} h</dd></div><div><dt>${a.scoreChange}</dt><dd>${r.percentChange}%</dd></div></dl><h4>${a.scoreCaseOutcome}</h4><p>${a.scoreScale}</p>${notes.map(n=>`<p class="small-note">${n}</p>`).join('')}<div class="report-actions"><button type="button" class="btn primary" id="downloadCase">${a.downloadCase}</button><button type="button" class="btn muted" id="reviseCase">${a.caseAgain}</button></div>`;
+ $('downloadCase').addEventListener('click',()=>download('ali-case-decision-report.json',{model_version:'0.1',language:state.lang,illustrative:true,created_at:new Date().toISOString(),baseline:model.baseline,selection:state.caseAnswers,outcome:r,limitations:notes}));
+ $('reviseCase').addEventListener('click',()=>{state.caseStep=0;state.caseReport=false;drawCase();});
+}
+function drawAssessment(){
+ const a=tr();$('readScale').innerHTML=a.scale.map(s=>`<span>${htmlSafe(s)}</span>`).join('');
+ $('assessmentQuestions').innerHTML=model.dimensions.map((dim,i)=>`<div class="dimension"><div class="dimension-head"><span class="dimension-num">0${i+1}</span><div><h3>${htmlSafe(a.dim[dim.id][0])}</h3><p class="dim-desc">${htmlSafe(a.dim[dim.id][1])}</p></div></div>${dim.questions.map(id=>`<div class="assess-question"><label class="q-title" id="label-${id}">${htmlSafe(a.questions[id])}</label><div role="radiogroup" class="choice-row" aria-labelledby="label-${id}">${model.answerOptions.map((v,j)=>`<label><input type="radio" name="${id}" value="${v}" ${state.assessment[id]===v?'checked':''}/>${htmlSafe(a.scale[j].split(' · ')[1])}</label>`).join('')}</div></div>`).join('')}</div>`).join('');
+ $('assessmentQuestions').querySelectorAll('input[type="radio"]').forEach(el=>el.addEventListener('change',()=>{state.assessment[el.name]=el.value;state.assessmentShown=false;$('assessmentResult').classList.add('hidden');updateAssessmentProgress();}));
+ updateAssessmentProgress();if(state.assessmentShown)drawAssessmentReport();
+}
+function updateAssessmentProgress(){const n=Object.keys(state.assessment).length; $('assessmentProgress').textContent=tr().assessmentProgress(n);}
+function calculateAssessment(){
+ const score=model.scoreAssessment(state.assessment);
+ if(!score.allAnswered){$('assessmentResult').classList.remove('hidden');$('assessmentResult').innerHTML=`<div class="alert">${tr().assessmentMissing}</div>`;return;}
+ state.assessmentShown=true;drawAssessmentReport();$('assessmentResult').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function drawAssessmentReport(){
+ const a=tr(),r=model.scoreAssessment(state.assessment);if(!r.allAnswered)return;
+ let gate=r.missingGates.length>0;
+ let html=`<h3>${a.readResultTitle}</h3><p>${a.readResultCaution}</p><div class="result-grid">`;
+ for(const s of r.scores){const title=a.dim[s.id][0];html+=`<div class="result-dimension"><h4>${htmlSafe(title)}</h4><div class="bar-meta"><span>${htmlSafe(a.readBand[s.band])}</span><span>${s.points}/4</span></div><div class="track"><span class="fill" style="width:${s.percent}%"></span></div><p>${htmlSafe(a.dim[s.id][2])}</p></div>`;}
+ html+='</div><h3 style="margin-top:22px">'+a.readGateTitle+'</h3>';
+ html+=`<div class="${gate?'alert':'good-note'}">${gate?a.readGateBlocked:a.readGateConditional}</div>`;
+ if(gate) html+=`<ul>${r.missingGates.map(k=>`<li>${htmlSafe(a.gateDescriptions[k])}</li>`).join('')}</ul>`;
+ if(r.unknownCount>0)html+=`<p class="small-note">${a.readUnknown}</p>`;
+ html+=`<h3 style="margin-top:20px">${a.readAreasTitle}</h3>`;
+ html+=r.areas.length?`<ul>${r.areas.map(k=>`<li><b>${htmlSafe(a.dim[k][0])}:</b> ${htmlSafe(a.dim[k][2])}</li>`).join('')}</ul>`:`<p>${a.readNoGaps}</p>`;
+ html+=`<p class="small-note">${a.reviewOnly}</p><div class="report-actions"><button class="btn primary" type="button" id="downloadAssessment">${a.downloadAssessment}</button></div>`;
+ $('assessmentResult').innerHTML=html;$('assessmentResult').classList.remove('hidden');
+ $('downloadAssessment').addEventListener('click',()=>download('ai-readiness-self-assessment.json',{
+  model_version:'0.1',language:state.lang,created_at:new Date().toISOString(),is_self_assessment:true,is_certification:false,
+  answers:state.assessment,scores:r,important_note:a.readResultCaution,critical_controls:r.missingGates.map(k=>a.gateDescriptions[k]),
+  suggested_actions:r.areas.map(id=>({dimension:a.dim[id][0],action:a.dim[id][2]}))}));
+}
+function drawMethod(){const a=tr();$('methodContent').innerHTML=`<div class="method-grid">${a.methodCards.map(([name,html])=>`<div class="method-tile"><h3>${name}</h3><p>${html}</p></div>`).join('')}<div class="method-tile"><h3>${a.methodLinks[0]}</h3><p><a href="docs/methodology.md" target="_blank" rel="noopener">${a.methodLinks[0]} ↗</a></p><p><a href="docs/assessment_specification.md" target="_blank" rel="noopener">${a.methodLinks[1]} ↗</a></p><p><a href="data/reporting_worklog.csv" target="_blank" rel="noopener">${a.methodLinks[2]} ↗</a></p></div><div class="method-tile"><h3>${a.methodLinks[3]}</h3><p>${a.copyNotNeeded}</p><p>model.js · data/*.csv · docs/*.md · tests/model.test.cjs</p></div></div>`;}
+function download(filename,obj){const json=JSON.stringify(obj,null,2),blob=new Blob([json],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+$('langEn').addEventListener('click',()=>langChange('en'));
+$('langAr').addEventListener('click',()=>langChange('ar'));
+['case','assessment','method'].forEach(tab=>$('tab'+tab.charAt(0).toUpperCase()+tab.slice(1)).addEventListener('click',()=>switchTab(tab)));
+$('heroAssessment').addEventListener('click',()=>switchTab('assessment'));
+$('heroCase').addEventListener('click',()=>switchTab('case'));
+$('caseNext').addEventListener('click',caseNext);$('caseBack').addEventListener('click',caseBack);
+$('assessmentCalculate').addEventListener('click',calculateAssessment);
+$('assessmentReset').addEventListener('click',()=>{state.assessment={};state.assessmentShown=false;$('assessmentResult').classList.add('hidden');drawAssessment();});
+langChange('en');switchTab('case',false);
+})();
+
+</script>
+</body>
+</html>
