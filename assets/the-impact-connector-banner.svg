@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+<title id="title">Saddam Sayyaleh — The Impact Connector</title>
+<desc id="desc">Deep navy branded header with lime and teal accents. Strategic Partnerships, Social Innovation and International Development.</desc>
+<rect width="1200" height="300" rx="18" fill="#101D29"/>
+<rect x="0" y="0" width="12" height="300" fill="#C9F46B"/>
+<g opacity="0.28" stroke="#14797F" stroke-width="2.5" fill="none">
+<path d="M923 67 L1035 110 L1118 54 L1175 122 L1068 207 L948 224 L923 67"/>
+<path d="M1035 110 L948 224 M1035 110 L1068 207 M1118 54 L1068 207"/>
+</g>
+<g fill="#C9F46B">
+<circle cx="923" cy="67" r="9"/><circle cx="1035" cy="110" r="12"/><circle cx="1118" cy="54" r="8"/><circle cx="1175" cy="122" r="9"/>
+</g>
+<g fill="#14797F"><circle cx="1068" cy="207" r="13"/><circle cx="948" cy="224" r="10"/></g>
+<text x="76" y="70" font-family="Arial, Helvetica, sans-serif" fill="#C9F46B" font-size="20" font-weight="700" letter-spacing="3">SADDAM SAYYALEH</text>
+<text x="76" y="136" font-family="Arial, Helvetica, sans-serif" fill="#FFFFFF" font-size="58" font-weight="700">The Impact Connector</text>
+<text x="78" y="187" font-family="Arial, Helvetica, sans-serif" fill="#C9F46B" font-size="24">Good things happen when people connect.</text>
+<line x1="78" y1="213" x2="810" y2="213" stroke="#14797F" stroke-width="2"/>
+<text x="78" y="251" font-family="Arial, Helvetica, sans-serif" fill="#DCE7E8" font-size="20">Strategic Partnerships  ·  Social Innovation  ·  International Development</text>
+</svg>
