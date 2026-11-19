@@ -21,7 +21,20 @@ I work across humanitarian action, international development and social innovati
 
 I'm interested in how knowledge-sharing, practical digital tools and responsible AI can help organisations work more effectively and adapt to change.
 
-This GitHub space is where I plan to document useful resources, workflow experiments and emerging tools, particularly for humanitarian and development organisations. I'll add projects as they are developed and tested.
+This GitHub space is where I plan to document useful resources, workflow experiments and emerging tools, particularly for humanitarian and development organisations. The first open methodology demonstration is now available below. It is a constructed learning scenario, not a completed client engagement.
+
+## Applied AI Workflow Lab — by Saddam Sayyaleh
+
+**The Impact Connector | AI Readiness & Workflow Lab (v0.1)**
+
+Designed and authored by Saddam Sayyaleh. Explore Ali's nonprofit reporting case, a six-dimension organisational AI readiness self-assessment, and the underlying transparent decision model.
+
+- [Interactive application source and bilingual interface](docs/index.html)
+- [Applied methodology and case design](docs/docs/methodology.md)
+- [Assessment scoring, safeguards and limitations](docs/docs/assessment_specification.md)
+- [Synthetic example datasets](docs/data/)
+
+The case uses constructed data and modelled workload assumptions. It is not a claim of a commissioned AI consultancy engagement, nor a verified readiness certification. GitHub Pages hosting will become available when Pages is enabled and the deployment succeeds.
 
 ## Let's connect
 
