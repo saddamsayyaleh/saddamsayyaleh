@@ -14,7 +14,7 @@
 
 ## About me
 
-I’m **Saddam Sayyaleh**, an international development and social innovation professional working across organisational growth, strategic partnerships, programme development and institutional engagement.
+I’m **Saddam Sayyaleh (صدام سيالة)**, an international development and social innovation professional working across organisational growth, strategic partnerships, programme development and institutional engagement.
 
 I founded **I Learn** in Jordan in 2012 and subsequently helped establish its formal operating organisation, **NasJo for Training**, in 2018. My later experience includes regional development and partnership leadership at **Anera**, institutional engagement, and independently commissioned research and advisory assignments.
 
