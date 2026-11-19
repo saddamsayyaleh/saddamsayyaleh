@@ -1,0 +1,7 @@
+activity_id,activity_name,hours,effort_scope
+collect,Collect and chase updates,12,all_reporting_staff
+consolidate,Consolidate data,14,all_reporting_staff
+resolve,Resolve inconsistencies,10,all_reporting_staff
+draft,Prepare bilingual narratives,14,all_reporting_staff
+verify,Verify sources and content,10,all_reporting_staff
+approve,Final revisions and approval administration,4,all_reporting_staff
